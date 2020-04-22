@@ -116,15 +116,18 @@ document.getElementById("textareaLeft").addEventListener("input", () => {
     let inputLanguage = document.querySelector(".active1").innerHTML.toLowerCase().replace(/[{()}]/g, '')
     let outputLanguage = document.querySelector(".active2").innerHTML.toLowerCase().replace(/[{()}]/g, '')
     let textValue = document.getElementById("textareaLeft").value
-    let url = `ajax/Translate.php?inputLanguage=${inputLanguage}&outputLanguage=${outputLanguage}&textValue=${textValue}`
+    let url = `ajax/Translate.php?inputLanguage=${inputLanguage}&outputLanguage=${outputLanguage}&textValue=${textValue}` 
     let params = `inputLanguage=${inputLanguage}&outputLanguage=${outputLanguage}&textValue=${textValue}`
     postData(url, params).then((data) => {
-        if(data === false){
-            document.getElementById("outputText").innerText = "couldn't translate"
-        } else {
-            document.getElementById("outputText").innerText = `${data.output.toLowerCase()}`
+        let sentance = ""
+        for(let i = 0; i < data.length; i++){
+            if(data[i] === false){
+                sentance += "..."
+            } else {
+                sentance += " " + data[i].output
+            }
         }
-        console.log(data)
+        document.getElementById("outputText").innerText = sentance.toLowerCase()
     }).catch((error) => {
         console.log("something went wrong", error)
     })
@@ -161,7 +164,8 @@ function displayTwo(){
 async function postData(url, params){
     const response = await fetch(url, {
         method: 'POST',
-        headers: { 'Content-type': 'application/x-www-form-urlencoded' },
+        headers: { 'Content-type': 'application/x-www-form-urlencoded',
+                    'Content-Type': 'application/json' },
         body: params
     })
     return response.json()
