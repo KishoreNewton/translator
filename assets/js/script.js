@@ -122,7 +122,7 @@ document.getElementById("textareaLeft").addEventListener("input", () => {
         let length = data.length - 1
         let length2 = data.length - 2
         let length3 = data.length - 3
-        document.getElementById("suggestionText").innerHTML = `<a onclick="replaceText(this)">${data[length2].input}</a>, <a onclick="replaceText(this)">${data[length3].input}</a>,  <a onclick="replaceText(this)">${data[length].input}</a>`
+        document.getElementById("suggestionText").innerHTML = `<a onclick="replaceText(this)">${data[length2].input}</a> <a onclick="replaceText(this)">${data[length3].input}</a> <a onclick="replaceText(this)">${data[length].input}</a>`
     }).catch((error) => {
         // console.log("something went wrong", error)
     })
@@ -147,10 +147,23 @@ document.getElementById("textareaLeft").addEventListener("input", () => {
                 return "...";
             }
             let result = languages.getKey(capatalizedInputValue).toUpperCase()
-            document.getElementById("suggestionText").innerHTML = `${result} Detected`
+            document.getElementById("suggestionText").innerHTML = `<a onclick="changeLanguage(this)">${result} Detected</a>`
         }).catch((error) => {
             console.log("something went wrong", error)
         })
+    }
+})
+
+document.addEventListener("click", (e) => {
+    if (e.target.id === 'outputTextArea'){
+        let copyText = document.getElementById("outputTextArea")
+        copyText.disabled = false
+        copyText.select()
+        copyText.setSelectionRange(0, 99999)
+        document.execCommand("copy")
+    } else {
+        let copyText = document.getElementById("outputTextArea")
+        copyText.disabled = true
     }
 })
 
@@ -211,3 +224,26 @@ function getKeyByValue(object, value) {
         } 
     } 
 } 
+
+function changeLanguage(id){
+    let language = id.innerText
+    let languageId = language.lastIndexOf(" ")
+    language = language.substring(0, languageId).toLowerCase()
+    let languageName = document.getElementById(language).innerText
+    let positionThree = document.querySelector("*[data-replace=three]")
+    let positionThreeId = positionThree.id
+    let positionThreeText = positionThree.innerHTML
+    let li = document.createElement("li")
+    li.innerText = positionThreeText
+    li.setAttribute("id", positionThreeId)
+    li.setAttribute("class", "item1")
+    document.getElementById("append").appendChild(li)
+    positionThree.id = language
+    positionThree.innerHTML = languageName
+    let lists = document.querySelectorAll('.item1')
+    removeClassActiveOne(lists)
+    displayOne()
+    positionThree.className = "item1 active1"
+}
+
+{/* <li id="greek"  class="item1">Greek</li> */}
