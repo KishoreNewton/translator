@@ -14,22 +14,6 @@ document.getElementById("outputLanguage").addEventListener("click", (e) => {
     }
 })
 
-document.getElementById("switchLanguage").addEventListener("click", () => {
-    let active1 = document.getElementsByClassName("active1")[0].innerHTML
-    let active2 = document.getElementsByClassName("active2")[0].innerHTML.toLowerCase()
-    let active1Id = 'output' + active1
-    let active2Id = document.getElementsByClassName("active2")[0].id.slice(6).toLowerCase()
-    let lists = document.querySelectorAll('.item1')
-    removeClassActiveOne(lists)
-    let lists2 = document.querySelectorAll('.item2')
-    removeClassActiveTwo(lists2)
-    for(let list of lists2){
-        list.classList.remove("active2")
-    }
-    document.getElementById(active1Id).className = "item2 active2"
-    document.getElementById(active2Id).className = "item1 active1"
-})
-
 document.getElementById("deleteIcon").addEventListener("click", () => {
     document.getElementById("textareaLeft").value = ""
     document.getElementById("textareaLeft").focus()
@@ -116,7 +100,8 @@ document.getElementById("textareaLeft").addEventListener("input", () => {
     let inputLanguage = document.querySelector(".active1").innerHTML.toLowerCase().replace(/[{()}]/g, '')
     let outputLanguage = document.querySelector(".active2").innerHTML.toLowerCase().replace(/[{()}]/g, '')
     let textValue = document.getElementById("textareaLeft").value
-    let url = `ajax/Translate.php?inputLanguage=${inputLanguage}&outputLanguage=${outputLanguage}&textValue=${textValue}` 
+    if(inputLanguage !== "detect language"){
+    let url = `ajax/Translate.php` 
     let params = `inputLanguage=${inputLanguage}&outputLanguage=${outputLanguage}&textValue=${textValue}`
     postData(url, params).then((data) => {
         let sentance = ""
@@ -127,10 +112,46 @@ document.getElementById("textareaLeft").addEventListener("input", () => {
                 sentance += " " + data[i].output
             }
         }
-        document.getElementById("outputText").innerText = sentance.toLowerCase()
+        document.getElementById("outputTextArea").value = sentance.toLowerCase()
     }).catch((error) => {
         console.log("something went wrong", error)
     })
+    let url2 = `ajax/Suggestions.php` 
+    let params2 = `inputLanguage=${inputLanguage}&textValue=${textValue}`
+    postData(url2, params2).then((data) => {
+        let length = data.length - 1
+        let length2 = data.length - 2
+        let length3 = data.length - 3
+        document.getElementById("suggestionText").innerHTML = `<a onclick="replaceText(this)">${data[length2].input}</a>, <a onclick="replaceText(this)">${data[length3].input}</a>,  <a onclick="replaceText(this)">${data[length].input}</a>`
+    }).catch((error) => {
+        // console.log("something went wrong", error)
+    })
+    } else {
+        document.getElementById("suggestionText").innerHTML = "Language"
+        let url = `ajax/Detect.php` 
+        let params = `textValue=${textValue}`
+        postData(url, params).then((data) => {
+            let length = data.length - 1
+            let languages = data[length]
+            let lastword = textValue.split(" ").pop()
+            if(lastword === ""){
+                lastword = "a"
+            }
+            let capatalizedInputValue = lastword[0].toUpperCase() + lastword.slice(1)
+            Object.prototype.getKey = function(value){
+                for(var key in this){
+                  if(this[key] == value){
+                    return key;
+                  }
+                }
+                return "...";
+            }
+            let result = languages.getKey(capatalizedInputValue).toUpperCase()
+            document.getElementById("suggestionText").innerHTML = `${result} Detected`
+        }).catch((error) => {
+            console.log("something went wrong", error)
+        })
+    }
 })
 
 
@@ -170,3 +191,23 @@ async function postData(url, params){
     })
     return response.json()
 }
+
+function replaceText(word){
+    let replaceWord = word.innerText.toLowerCase()
+    let replaceSentance = document.getElementById("textareaLeft").value
+    let lastWord = replaceSentance.lastIndexOf(" ")
+    replaceSentance = replaceSentance.substring(0, lastWord)
+    let string = `${replaceSentance} ${replaceWord}`
+    string = string.trim();
+    document.getElementById("textareaLeft").value = string
+    document.getElementById("textareaLeft").focus()
+}
+
+function getKeyByValue(object, value) { 
+    for (var prop in object) { 
+        if (object.hasOwnProperty(prop)) { 
+            if (object[prop] === value) 
+            return prop; 
+        } 
+    } 
+} 

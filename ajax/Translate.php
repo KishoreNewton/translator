@@ -12,12 +12,6 @@ if(isset($_POST["inputLanguage"]) && isset($_POST["outputLanguage"]) && isset($_
         $query->bindValue(":input", $word);
         $query->execute();
         $row = $query->fetch(PDO::FETCH_ASSOC);
-        // if($row == false){
-        //     $json = json_encode(array('input' => 'aww', 'output' => 'aww'));
-        //     echo $json;
-        // } else{
-        //     echo json_encode($row);
-        // }
         array_push($array, $row);
     }
     echo json_encode($array);
