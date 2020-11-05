@@ -1,121 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Translator- Translate to any Language.</title>
-    <meta name=”robots” content="index, follow">
-    <meta name="description" content="Translte to the language you know">
-    <meta name="author" content="Kishore Newton">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta name="”robots”" content="index, follow" />
+    <meta name="description" content="Translte to the language you know" />
+    <meta name="author" content="Kishore Newton" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-</head> 
-<body>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <header>
-        <div class="title">
-            <div>
-                <a href="index.html"><img src="assets/icons/logo.png" alt="logo" id="logo"></a>
-                <span>translator</span>
-            </div>
+      <div class="title">
+        <div>
+          <a href="index.html">
+            <img src="assets/icons/logo.png" alt="logo" id="logo" />
+          </a>
+          <span>translator</span>
         </div>
+      </div>
     </header>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-6" id="textArea">
-                <div class="topText">
-                    <span class="detectLanguage">TranslateAll</span>
-                    <span>
-                        <ul id="inputLanguage" class="inputLanguage">
-                            <li class="item1" id="detectLanguage">Detect Language</li>
-                            <li class="active1 item1" data-replace="three" id="english">English</li>
-                        </ul>
-                        <span id="dropDown"><img src="assets/icons/caret-down-outline.svg" /></span>
-                    </span>
-                </div> 
-                <div id="otherLanguage" style="display: none;">
-                    <ul id="append">
-                        <li id="greek"  class="item1">Greek</li>
-                        <li id="french" class="item1">French</li>
-                       <li id="hindi" class="item1">Hindi</li>
-                       <li id="spanish" class="item1">Spanish</li>
-                       <li id="italien" class="item1">Italian</li>
-                       <li id="russian" class="item1">Russian</li>
-                       <li id="german" class="item1">German</li>
-                       <li id="hebrew" class="item1">Hebrew</li>
-                       <li id="dutch" class="item1">Dutch</li>
-                       <li id="arabic" class="item1">Arabic</li>
-                       <li id="bengali" class="item1">Bengali</li>
-                       <li id="chineses" class="item1">Chinese(s)</li>
-                       <li id="chineset" class="item1">chinese(t)</li>
-                       <li id="swedish" class="item1">Swedish</li>
-                       <li id="japanese" class="item1">Japanese</li>
-                       <li id="romanian" class="item1">Romanian</li>
-                       <li id="portuguese" class="item1">Portuguese</li>
-                    </ul>
-                </div>
-                <div class="median" id="medianOne">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <textarea onfocus=" let value = this.value; this.value = null; this.value=value" name="" id="textareaLeft" cols="30" rows="10" maxlength="200"></textarea>
-                        </div>
-                        <div class="col-lg-1">
-                            <h3 id="deleteIcon" style="display: none;"><img src="assets/icons/close-outline.svg" /></h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer" id="footerOne">
-                    <h4 id="stringLength">0/200</h4>
-                </div>
+      <div class="row">
+        <div class="col-lg-6" id="textArea">
+          <div class="topText">
+            <span class="detectLanguage">TranslateAll</span>
+            <span>
+              <ul id="inputLanguage" class="inputLanguage">
+                <li class="item1" id="detectLanguage">Detect Language</li>
+                <li class="active1 item1" data-replace="three" id="english">
+                  English
+                </li>
+              </ul>
+              <span id="dropDown">
+                <img src="assets/icons/caret-down-outline.svg" />
+              </span>
+            </span>
+          </div>
+          <div id="otherLanguage" style="display: none;">
+            <ul id="append">
+              <li id="greek" class="item1">Greek</li>
+              <li id="french" class="item1">French</li>
+              <li id="hindi" class="item1">Hindi</li>
+              <li id="spanish" class="item1">Spanish</li>
+              <li id="italien" class="item1">Italian</li>
+              <li id="russian" class="item1">Russian</li>
+              <li id="german" class="item1">German</li>
+              <li id="hebrew" class="item1">Hebrew</li>
+              <li id="dutch" class="item1">Dutch</li>
+              <li id="arabic" class="item1">Arabic</li>
+              <li id="bengali" class="item1">Bengali</li>
+              <li id="chineses" class="item1">Chinese(s)</li>
+              <li id="chineset" class="item1">chinese(t)</li>
+              <li id="swedish" class="item1">Swedish</li>
+              <li id="japanese" class="item1">Japanese</li>
+              <li id="romanian" class="item1">Romanian</li>
+              <li id="portuguese" class="item1">Portuguese</li>
+            </ul>
+          </div>
+          <div class="median" id="medianOne">
+            <div class="row">
+              <div class="col-lg-10">
+                <textarea
+                  onfocus=" let value = this.value; this.value = null; this.value=value"
+                  name=""
+                  id="textareaLeft"
+                  cols="30"
+                  rows="10"
+                  maxlength="200"
+                ></textarea>
+              </div>
+              <div class="col-lg-1">
+                <h3 id="deleteIcon" style="display: none;">
+                  <img src="assets/icons/close-outline.svg" />
+                </h3>
+              </div>
             </div>
-
-
-            <div class="col-lg-6" id="textAreaTwo">
-                <div class="topTextOutput">
-                    <span>
-                        <ul id="outputLanguage" class="inputLanguage">
-                            <li class="active2 item2" data-replace="outputThree" id="outputEnglish">English</li>
-                        </ul> 
-                        <span id="dropDownOutput"><img src="assets/icons/caret-down-outline.svg" /></span>
-                    </span>
-                </div> 
-                <div id="otherLanguageTwo" style="display: none;">
-                    <ul>
-                       <li id="outputGreek"  class="item2">Greek</li>
-                       <li id="outputFrench" class="item2">French</li>
-                       <li id="outputHindi" class="item2">Hindi</li>
-                       <li id="outputSpanish" class="item2">Spanish</li>
-                       <li id="outputItalien" class="item2">Italian</li>
-                       <li id="outputRussian" class="item2">Russian</li>
-                       <li id="outputGerman" class="item2">German</li>
-                       <li id="outputHebrew" class="item2">Hebrew</li>
-                       <li id="outputDutch" class="item2">Dutch</li>
-                       <li id="outputArabic" class="item2">Arabic</li>
-                       <li id="outputBengali" class="item2">Bengali</li>
-                       <li id="outputChineses" class="item2">chinese(s)</li>
-                       <li id="outputChineset" class="item2">chinese(t)</li>
-                       <li id="outputSwedish" class="item2">Swedish</li>
-                       <li id="outputJapanese" class="item2">Japanese</li>
-                       <li id="outputRomanian" class="item2">Romanian</li>
-                       <li id="outputPortuguese" class="item2">Portuguese</li>
-                    </ul>
-                </div>
-                <div class="median" id="medianTwo">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <div id="outputText">
-                                <textarea id="outputTextArea" cols="30" rows="10" maxlength="200" disabled></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-1"></div>
-                    </div>
-                </div>
-                <div class="footer" id="footerTwo"></div>
-            </div>
+          </div>
+          <div class="footer" id="footerOne">
+            <h4 id="stringLength">0/200</h4>
+          </div>
         </div>
+
+        <div class="col-lg-6" id="textAreaTwo">
+          <div class="topTextOutput">
+            <span>
+              <ul id="outputLanguage" class="inputLanguage">
+                <li
+                  class="active2 item2"
+                  data-replace="outputThree"
+                  id="outputEnglish"
+                >
+                  English
+                </li>
+              </ul>
+              <span id="dropDownOutput">
+                <img src="assets/icons/caret-down-outline.svg" />
+              </span>
+            </span>
+          </div>
+          <div id="otherLanguageTwo" style="display: none;">
+            <ul>
+              <li id="outputGreek" class="item2">Greek</li>
+              <li id="outputFrench" class="item2">French</li>
+              <li id="outputHindi" class="item2">Hindi</li>
+              <li id="outputSpanish" class="item2">Spanish</li>
+              <li id="outputItalien" class="item2">Italian</li>
+              <li id="outputRussian" class="item2">Russian</li>
+              <li id="outputGerman" class="item2">German</li>
+              <li id="outputHebrew" class="item2">Hebrew</li>
+              <li id="outputDutch" class="item2">Dutch</li>
+              <li id="outputArabic" class="item2">Arabic</li>
+              <li id="outputBengali" class="item2">Bengali</li>
+              <li id="outputChineses" class="item2">chinese(s)</li>
+              <li id="outputChineset" class="item2">chinese(t)</li>
+              <li id="outputSwedish" class="item2">Swedish</li>
+              <li id="outputJapanese" class="item2">Japanese</li>
+              <li id="outputRomanian" class="item2">Romanian</li>
+              <li id="outputPortuguese" class="item2">Portuguese</li>
+            </ul>
+          </div>
+          <div class="median" id="medianTwo">
+            <div class="row">
+              <div class="col-lg-10">
+                <div id="outputText">
+                  <textarea
+                    id="outputTextArea"
+                    cols="30"
+                    rows="10"
+                    maxlength="200"
+                    disabled
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-lg-1"></div>
+            </div>
+          </div>
+          <div class="footer" id="footerTwo"></div>
+        </div>
+      </div>
     </div>
 
     <p class="suggestionText" id="suggestionText">Suggestions</p>
-<script src="assets/js/script.js"></script>
-</body>
+    <script src="assets/js/script.js"></script>
+  </body>
 </html>
