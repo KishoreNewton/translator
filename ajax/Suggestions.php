@@ -13,7 +13,6 @@ if(isset($_POST["inputLanguage"]) && isset($_POST["textValue"])){
         while($row = $query->fetch(PDO::FETCH_ASSOC)){
             array_push($array, $row);
         }
-        
     }
     echo json_encode($array);
 } else {
